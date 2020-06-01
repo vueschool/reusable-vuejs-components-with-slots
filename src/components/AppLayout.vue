@@ -7,14 +7,11 @@
       <slot />
     </main>
     <footer>
-      <slot name="footer" />
+      <slot name="footer">made with slots</slot>
     </footer>
   </div>
 </template>
 
-<script>
-export default {};
-</script>
 
 <style scoped>
 .layout {
