@@ -1,19 +1,18 @@
 <template>
   <AppUserList>
-    <template #loading>
-      <AppSpinner />
+    <template #secondrow="{item}">
+      <a :href="'tel:' + item.phone"> {{ item.phone }}</a>
+      <a :href="'mailto:' + item.email"> {{ item.email }}</a>
     </template>
   </AppUserList>
 </template>
 
 <script>
 import AppUserList from "@/components/AppUserList";
-import AppSpinner from "@/components/AppSpinner";
 
 export default {
   components: {
-    AppUserList,
-    AppSpinner
+    AppUserList
   }
 };
 </script>
