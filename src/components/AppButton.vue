@@ -1,5 +1,5 @@
 <template>
-  <button><slot></slot></button>
+  <button v-on="$listeners"><slot></slot></button>
 </template>
 
 <script>
