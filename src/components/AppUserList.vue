@@ -1,7 +1,8 @@
 
 <template>
   <section>
-    <ul class="userlist">
+    <slot name="title">Users</slot>
+    <ul class="userlist" v-if="state === 'loaded'">
       <li v-for="item in data.results" :key="item.email">
         <div>
           <img
@@ -16,6 +17,12 @@
         </div>
       </li>
     </ul>
+    <slot v-else name="loading">
+      loading...
+    </slot>
+    <slot v-if="state === 'failed'" name="error">
+      Oops, something went wrong.
+    </slot>
   </section>
 </template>
 
@@ -26,6 +33,7 @@ const states = {
   loaded: "loaded",
   failed: "failed"
 };
+
 export default {
   data() {
     return {
@@ -44,11 +52,13 @@ export default {
       this.error = undefined;
       this.data = undefined;
       try {
-        const response = await fetch("https://randomuser.me/api/?results=5");
-        const json = await response.json();
-        this.state = "loaded";
-        this.data = json;
-        return response;
+        setTimeout(async () => {
+          const response = await fetch("https://randomuser.me/api/?results=5");
+          const json = await response.json();
+          this.state = "loaded";
+          this.data = json;
+          return response;
+        }, 1000);
       } catch (error) {
         this.state = "failed";
         this.error = error;
