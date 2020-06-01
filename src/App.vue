@@ -9,10 +9,9 @@
 
 <script>
 import AppUserList from "@/components/AppUserList";
-
 export default {
   components: {
-    AppUserList
-  }
+    AppUserList,
+  },
 };
 </script>
