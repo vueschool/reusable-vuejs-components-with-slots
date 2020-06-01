@@ -1,31 +1,13 @@
 <template>
-  <AppLayout>
-    <template #header>Slots are great</template>
-    <template #default>
-      <AppButton @click="log">
-        <AppIcon name="heart" />
-        add to favorites
-      </AppButton>
-    </template>
-    <template #footer>made with slots</template>
-  </AppLayout>
+  <AppUserList />
 </template>
 
 <script>
-import AppLayout from "@/components/AppLayout";
-import AppButton from "@/components/AppButton";
-import AppIcon from "@/components/AppIcon";
+import AppUserList from "@/components/AppUserList";
 
 export default {
   components: {
-    AppLayout,
-    AppButton,
-    AppIcon
-  },
-  methods: {
-    log() {
-      console.log("works");
-    }
+    AppUserList
   }
 };
 </script>
