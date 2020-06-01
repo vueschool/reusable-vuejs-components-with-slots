@@ -1,13 +1,19 @@
 <template>
-  <AppUserList :secondrow="item => item.phone"> </AppUserList>
+  <AppUserList>
+    <template #userlist="{list, count}">
+      {{ count }}
+      <AppUserCardsList :list="list" />
+    </template>
+  </AppUserList>
 </template>
 
 <script>
 import AppUserList from "@/components/AppUserList";
-
+import AppUserCardsList from "@/components/AppUserCardsList";
 export default {
   components: {
-    AppUserList
+    AppUserList,
+    AppUserCardsList
   }
 };
 </script>
