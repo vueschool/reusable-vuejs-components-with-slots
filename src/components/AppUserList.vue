@@ -6,6 +6,7 @@
       name="userlist"
       :count="data.results.length"
       :list="data.results"
+      :remove="remove"
       v-if="state === 'loaded'"
     >
       <ul class="userlist">
@@ -80,6 +81,9 @@ export default {
         this.error = error;
         return error;
       }
+    },
+    remove(item) {
+      this.data.results = this.data.results.filter(entry => entry.email !== item.email)
     }
   }
 };
