@@ -1,4 +1,3 @@
-
 <template>
   <section>
     <slot name="title">Users</slot>
@@ -21,7 +20,7 @@
               />
               <div>
                 <div>{{ item.name.first }}</div>
-                <slot name="secondrow" :item="item"></slot>
+                <slot name="secondrow" :item="item" :remove="remove"></slot>
               </div>
             </div>
           </slot>
@@ -43,7 +42,7 @@ const states = {
   loading: "loading",
   loaded: "loaded",
   failed: "failed"
-};
+}
 
 export default {
   props: {
@@ -58,35 +57,37 @@ export default {
       data: undefined,
       error: undefined,
       states
-    };
+    }
   },
   mounted() {
-    this.load();
+    this.load()
   },
   methods: {
     async load() {
-      this.state = "loading";
-      this.error = undefined;
-      this.data = undefined;
+      this.state = "loading"
+      this.error = undefined
+      this.data = undefined
       try {
         setTimeout(async () => {
-          const response = await fetch("https://randomuser.me/api/?results=5");
-          const json = await response.json();
-          this.state = "loaded";
-          this.data = json;
-          return response;
-        }, 1000);
+          const response = await fetch("https://randomuser.me/api/?results=5")
+          const json = await response.json()
+          this.state = "loaded"
+          this.data = json
+          return response
+        }, 1000)
       } catch (error) {
-        this.state = "failed";
-        this.error = error;
-        return error;
+        this.state = "failed"
+        this.error = error
+        return error
       }
     },
     remove(item) {
-      this.data.results = this.data.results.filter(entry => entry.email !== item.email)
+      this.data.results = this.data.results.filter(
+        (entry) => entry.email !== item.email
+      )
     }
   }
-};
+}
 </script>
 
 <style scoped>
