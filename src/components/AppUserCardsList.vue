@@ -9,14 +9,17 @@
             :alt="item.name.first + ' ' + item.name.last"
           />
           <div class="card-body">
-            
             <slot name="first" :text="item.name.first"></slot>
-
             <slot name="last" :text="item.name.last"></slot>
+            <slot
+              name="full"
+              :text="`${item.name.first} ${item.name.last}`"
+            ></slot>
 
-            <slot name="full" :text="`${item.name.first} ${item.name.last}`"></slot>
-
-            <slot name="fullWithTitle" :text="`${item.name.title} ${item.name.first} ${item.name.last}`"></slot>
+            <slot
+              name="fullWithTitle"
+              :text="`${item.name.title} ${item.name.first} ${item.name.last}`"
+            ></slot>
 
             <slot name="secondrow" :item="item"></slot>
           </div>
@@ -32,7 +35,7 @@ export default {
     list: Array,
     default: () => {}
   }
-};
+}
 </script>
 
 <style scoped>

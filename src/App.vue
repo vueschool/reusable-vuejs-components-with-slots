@@ -1,21 +1,18 @@
 <template>
   <div class="page">
-
     <select v-model="selected">
-      <option 
-        v-for="option in options" 
-        :value="option.value" 
-        :key="option.value">
-        {{option.label}}
-      </option>
+      <option
+        v-for="option in options"
+        :key="option.value"
+        :value="option.value"
+        >{{ option.label }}</option
+      >
     </select>
-
-
     <AppUserList>
       <template #userlist="{list}">
         <AppUserCardsList :list="list">
-          <template #[selected]="{text}">
-            <h4>{{text}}</h4>
+          <template #[selected]="{ text }">
+            <h4>{{ text }}</h4>
           </template>
         </AppUserCardsList>
       </template>
@@ -24,8 +21,8 @@
 </template>
 
 <script>
-import AppUserList from "@/components/AppUserList";
-import AppUserCardsList from "@/components/AppUserCardsList";
+import AppUserList from "@/components/AppUserList"
+import AppUserCardsList from "@/components/AppUserCardsList"
 export default {
   components: {
     AppUserList,
@@ -33,16 +30,16 @@ export default {
   },
   data() {
     return {
-      selected: 'first',
+      selected: "first",
       options: [
-        { value: 'first',  label: 'first name'},
-        { value: 'last',  label: 'last name'},
-        { value: 'full',  label: 'fullname'},
-        { value: 'fullWithTitle',  label: 'fullname with title'},
+        { value: "first", label: "first name" },
+        { value: "last", label: "last name" },
+        { value: "full", label: "full name" },
+        { value: "fullWithTitle", label: "full name with title" }
       ]
     }
   }
-};
+}
 </script>
 
 <style>
