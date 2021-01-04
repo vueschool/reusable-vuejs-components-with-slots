@@ -1,18 +1,10 @@
 <template>
   <div class="page">
-    <select v-model="selected">
-      <option
-        v-for="option in options"
-        :key="option.value"
-        :value="option.value"
-        >{{ option.label }}</option
-      >
-    </select>
     <AppUserList>
       <template #userlist="{list}">
         <AppUserCardsList :list="list">
-          <template #[selected]="{ text }">
-            <h4>{{ text }}</h4>
+          <template #secondrow="{ item }">
+            <h4>{{ item.name.first }}</h4>
           </template>
         </AppUserCardsList>
       </template>
@@ -21,12 +13,12 @@
 </template>
 
 <script>
-import AppUserList from "@/components/AppUserList"
-import AppUserCardsList from "@/components/AppUserCardsList"
+import AppUserList from "@/components/AppUserList";
+import AppUserCardsList from "@/components/AppUserCardsList";
 export default {
   components: {
     AppUserList,
-    AppUserCardsList
+    AppUserCardsList,
   },
   data() {
     return {
@@ -35,11 +27,11 @@ export default {
         { value: "first", label: "first name" },
         { value: "last", label: "last name" },
         { value: "full", label: "full name" },
-        { value: "fullWithTitle", label: "full name with title" }
-      ]
-    }
-  }
-}
+        { value: "fullWithTitle", label: "full name with title" },
+      ],
+    };
+  },
+};
 </script>
 
 <style>
