@@ -1,8 +1,6 @@
 <template>
   <div>
     <AppButton>press me</AppButton>
-    <AppButton>like me</AppButton>
-    <AppButton>buy me</AppButton>
   </div>
 </template>
 
@@ -11,7 +9,7 @@ import AppButton from "@/components/AppButton";
 
 export default {
   components: {
-    AppButton
-  }
+    AppButton,
+  },
 };
 </script>
