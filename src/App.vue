@@ -1,24 +1,18 @@
 <template>
   <AppUserList>
-    <template #userlist="{list, remove}">
-      <AppUserCardsList :list="list">
-        <template #secondrow="{item: user}">
-          <AppButton @click="remove(user)">remove</AppButton>
-        </template>
-      </AppUserCardsList>
+    <template #secondrow="{item: user, remove}">
+      <AppButton @click="remove(user)">remove</AppButton>
     </template>
   </AppUserList>
 </template>
 
 <script>
-import AppButton from "@/components/AppButton"
-import AppUserList from "@/components/AppUserList"
-import AppUserCardsList from "@/components/AppUserCardsList"
+import AppButton from "@/components/AppButton";
+import AppUserList from "@/components/AppUserList";
 export default {
   components: {
     AppButton,
     AppUserList,
-    AppUserCardsList
-  }
-}
+  },
+};
 </script>
