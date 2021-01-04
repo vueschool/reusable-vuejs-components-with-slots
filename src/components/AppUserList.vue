@@ -1,23 +1,31 @@
-
 <template>
   <section>
     <slot name="title">Users</slot>
-    <ul class="userlist" v-if="state === 'loaded'">
-      <li v-for="item in data.results" :key="item.email">
-        <div>
-          <img
-            width="48"
-            height="48"
-            :src="item.picture.large"
-            :alt="item.name.first + ' ' + item.name.last"
-          />
-          <div>
-            <div>{{ item.name.first }}</div>
-            <slot name="secondrow" :item="item"></slot>
-          </div>
-        </div>
-      </li>
-    </ul>
+    <slot
+      name="userlist"
+      v-if="state === 'loaded'"
+      :list="data.results"
+      :count="data.results.length"
+    >
+      <ul class="userlist">
+        <li v-for="item in data.results" :key="item.email">
+          <slot name="listitem" :user="item">
+            <div>
+              <img
+                width="48"
+                height="48"
+                :src="item.picture.large"
+                :alt="item.name.first + ' ' + item.name.last"
+              />
+              <div>
+                <div>{{ item.name.first }}</div>
+                <slot name="secondrow" :item="item"></slot>
+              </div>
+            </div>
+          </slot>
+        </li>
+      </ul>
+    </slot>
     <slot v-else name="loading">
       loading...
     </slot>
@@ -32,7 +40,7 @@ const states = {
   idle: "idle",
   loading: "loading",
   loaded: "loaded",
-  failed: "failed"
+  failed: "failed",
 };
 
 export default {
@@ -41,7 +49,7 @@ export default {
       state: "idle",
       data: undefined,
       error: undefined,
-      states
+      states,
     };
   },
   mounted() {
@@ -65,12 +73,12 @@ export default {
         this.error = error;
         return error;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style>
+<style scoped>
 .userlist {
   margin: 10px;
 }
