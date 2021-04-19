@@ -18,7 +18,7 @@ Slots do not replace props. The two features have different purposes.
 - How to compose components with reusable component patterns
 
 
-[Click here to watch the course]
+[Click here to watch the course](https://vueschool.io/courses/reusable-vuejs-components-with-slots)
 
 ---
 
